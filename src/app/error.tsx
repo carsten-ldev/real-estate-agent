@@ -1,6 +1,6 @@
-'use client' // Error boundaries must be Client Components
+"use client" // Error boundaries must be Client Components
  
-import { useEffect } from 'react'
+import { useEffect } from "react"
  
 export default function Error({
   error,
@@ -16,7 +16,7 @@ export default function Error({
  
   return (
     <div>
-      <h2>{error.message || 'Something went wrong!'}</h2>
+      <h2>{error.message || "Something went wrong!"}</h2>
       <button
         onClick={
           // Attempt to recover by trying to re-render the segment

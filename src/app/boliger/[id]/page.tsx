@@ -60,7 +60,7 @@ export default async function page({ params }: { params: { id: string }}) {
                         <span>Antal plan:</span><span>2</span>
                     </div>
                     <div className="grid grid-cols-[auto_auto] self-start gap-x-8">
-                        <span>Kælder:</span><span>{featuredHome.data.basementsize ? featuredHome.data.basementsize : '-'}</span>
+                        <span>Kælder:</span><span>{featuredHome.data.basementsize ? featuredHome.data.basementsize : "-"}</span>
                         <span>Byggeår:</span><span>{featuredHome.data.built} m²</span>
                         <span>Ombygget:</span><span>{featuredHome.data.remodel} m²</span>
                         <span>Energimærke:</span><span>{featuredHome.data.energylabel}</span>

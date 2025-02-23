@@ -18,7 +18,7 @@ export default function AgentCard({ data, horizontal = false, includeLink = true
 
         <article className={`relative ${horizontal ? "border border-gray-400 p-4 sm:grid sm:grid-cols-2 gap-4" : "shadow-xl"}`}>
                 <Image src={data.image.url} width={data.image.width} height={data.image.height} alt={data.name} />
-                <div className={`agent__body ${!horizontal ? 'p-6 text-center' : ''}`}>
+                <div className={`agent__body ${!horizontal ? "p-6 text-center" : ""}`}>
                     <h2 className="font-bold text-lg mt-4 sm:mt-0"> 
                         {data.name}
                     </h2>
