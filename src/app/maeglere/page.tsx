@@ -3,7 +3,7 @@ import { HeadlineRibbon } from "@/components/HeadlineRibbon"
 import { Agent } from "@/lib/types"
 import { Suspense } from "react"
 
-export async function getAgents() {
+async function getAgents() {
     const response = await fetch("http://dinmaegler.onrender.com/agents")
     if(!response.ok) throw new Error(`Failed to load data: ${response.statusText}`)
     return await response.json()
