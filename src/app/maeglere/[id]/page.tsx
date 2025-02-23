@@ -2,16 +2,13 @@ import { Agent } from "@/lib/types"
 import { Suspense } from "react"
 import AgentCard from "@/components/AgentCard"
 
-
-
-
-export async function getSingleAgent(id: string) {
+async function getSingleAgent(id: string) {
     const response = await fetch(`http://dinmaegler.onrender.com/agents/${id}`)
     if(!response.ok) throw new Error(`Failed to load data: ${response.statusText}`)
     return response.json()
 }
 
-export default async function page({ params }: { params: { id: string }}) {
+export default async function Page({ params }: { params: Promise<{ id: string }>}) {
     const { id } =  await params
     const featuredAgent: Agent = await getSingleAgent(id)
             
