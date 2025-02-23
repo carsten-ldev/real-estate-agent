@@ -1,5 +1,4 @@
 import { Property } from "@/lib/types"
-import { Suspense } from "react"
 import AgentCard from "@/components/AgentCard"
 import Image from "next/image"
 import PopOver from "@/components/PopOver"
@@ -8,12 +7,14 @@ import { IoGridOutline } from "react-icons/io5";
 import { IoMapOutline } from "react-icons/io5";
 import { IoHeartOutline } from "react-icons/io5";
 
+export const dynamic = "force-dynamic"
+
 type HomeData = {
     data: Property
 }
 
 async function getSingleHome(id: string) {
-    const response = await fetch(`http://localhost:3000/api/homes/${id}`)
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/homes/${id}`)
     if(!response.ok) throw new Error(`Failed to load data: ${response.statusText}`)
     return response.json()
 }
@@ -24,7 +25,6 @@ export default async function Page({ params }: { params: { id: string }}) {
         
     return (
         <>
-        <Suspense fallback="Loading home...">
         <figure className="h-[70vh]">
             <Image className="w-full h-full object-cover" src={featuredHome.data.images[0].url} width={featuredHome.data.images[0].width} height={featuredHome.data.images[0].height} alt={featuredHome.data.adress1} />
         </figure>
@@ -101,7 +101,6 @@ export default async function Page({ params }: { params: { id: string }}) {
             map goes here
         </PopOver>
         
-        </Suspense>
         </>
     )
 }
