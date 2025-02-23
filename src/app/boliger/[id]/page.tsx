@@ -12,14 +12,14 @@ type HomeData = {
     data: Property
 }
 
-export async function getSingleHome(id: string) {
+async function getSingleHome(id: string) {
     const response = await fetch(`http://localhost:3000/api/homes/${id}`)
     if(!response.ok) throw new Error(`Failed to load data: ${response.statusText}`)
     return response.json()
 }
 
-export default async function page({ params }: { params: { id: string }}) {
-    const { id } =  await params
+export default async function Page({ params }: { params: { id: string }}) {
+    const { id } = params
     const featuredHome: HomeData = await getSingleHome(id)
         
     return (
