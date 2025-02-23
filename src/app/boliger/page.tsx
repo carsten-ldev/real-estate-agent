@@ -7,8 +7,8 @@ type HomesData = {
     data: Property[]
 }
 
-export async function getFeatured() {
-    const response = await fetch("http://localhost:3000/api/homes")
+async function getFeatured() {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/homes`)
     if(!response.ok) throw new Error(`Failed to load data: ${response.statusText}`)
     return response.json()
 }
