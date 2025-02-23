@@ -13,8 +13,11 @@ type HomeData = {
     data: Property
 }
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || `https://${process.env.VERCEL_URL}`;
+
+
 async function getSingleHome(id: string) {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/homes/${id}`)
+    const response = await fetch(`${API_BASE_URL}/api/homes/${id}`)
     if(!response.ok) throw new Error(`Failed to load data: ${response.statusText}`)
     return response.json()
 }
