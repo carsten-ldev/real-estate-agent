@@ -2,6 +2,8 @@ import { Agent } from "@/lib/types"
 import { Suspense } from "react"
 import AgentCard from "@/components/AgentCard"
 
+export const dynamic = "force-dynamic"
+
 async function getSingleAgent(id: string) {
     const response = await fetch(`http://dinmaegler.onrender.com/agents/${id}`)
     if(!response.ok) throw new Error(`Failed to load data: ${response.statusText}`)
