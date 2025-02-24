@@ -9,9 +9,6 @@ import { IoHeartOutline } from "react-icons/io5";
 
 export const dynamic = "force-dynamic"
 
-type HomeData = {
-    data: Property
-}
 
 async function getSingleHome(id: string) {
     const response = await fetch(`https://dinmaegler.onrender.com/homes/${id}`)
@@ -21,19 +18,19 @@ async function getSingleHome(id: string) {
 
 export default async function Page({ params }: { params: Promise<{ id: string }>}) {
     const { id } = await params
-    const featuredHome: HomeData = await getSingleHome(id)
+    const featuredHome: Property = await getSingleHome(id)
         
     return (
         <>
         <figure className="h-[70vh]">
-            <Image className="w-full h-full object-cover" src={featuredHome.data.images[0].url} width={featuredHome.data.images[0].width} height={featuredHome.data.images[0].height} alt={featuredHome.data.adress1} />
+            <Image className="w-full h-full object-cover" src={featuredHome.images[0].url} width={featuredHome.images[0].width} height={featuredHome.images[0].height} alt={featuredHome.adress1} />
         </figure>
         <section className="px-3 mb-16">
             <div className="container mx-auto">
                 <div className="grid md:grid-cols-3 my-8">
                     <div>
-                        <h1 className="text-base font-bold">{featuredHome.data.adress1}</h1>
-                        <p className="text-base font-bold">{featuredHome.data.postalcode} {featuredHome.data.city}</p>
+                        <h1 className="text-base font-bold">{featuredHome.adress1}</h1>
+                        <p className="text-base font-bold">{featuredHome.postalcode} {featuredHome.city}</p>
                     </div>
                     <div className=" self-center flex justify-center gap-8">
                         <button popoverTarget="gallery" title="Fotos"><IoImagesOutline color="#ccc" size={32} /></button>
@@ -47,40 +44,40 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
 
                     </div>
                     <div className="self-center">
-                    <p className="font-bold text-xl text-right">Kr. {featuredHome.data.price.toLocaleString("da-DK")}</p>
+                    <p className="font-bold text-xl text-right">Kr. {featuredHome.price.toLocaleString("da-DK")}</p>
                     </div>
                 </div>
 
                 <div className="flex justify-between my-8">
                     <div className="grid grid-cols-[auto_auto] gap-x-8">
                         <span>Sagsnummer:</span><span>1234567898</span>
-                        <span>Boligareal:</span><span>{featuredHome.data.livingspace} m²</span>
-                        <span>Grundareal:</span><span>{featuredHome.data.lotsize} m²</span>
-                        <span>Rum/værelser:</span><span>{featuredHome.data.rooms}</span>
+                        <span>Boligareal:</span><span>{featuredHome.livingspace} m²</span>
+                        <span>Grundareal:</span><span>{featuredHome.lotsize} m²</span>
+                        <span>Rum/værelser:</span><span>{featuredHome.rooms}</span>
                         <span>Antal plan:</span><span>2</span>
                     </div>
                     <div className="grid grid-cols-[auto_auto] self-start gap-x-8">
-                        <span>Kælder:</span><span>{featuredHome.data.basementsize ? featuredHome.data.basementsize : "-"}</span>
-                        <span>Byggeår:</span><span>{featuredHome.data.built} m²</span>
-                        <span>Ombygget:</span><span>{featuredHome.data.remodel} m²</span>
-                        <span>Energimærke:</span><span>{featuredHome.data.energylabel}</span>
+                        <span>Kælder:</span><span>{featuredHome.basementsize ? featuredHome.basementsize : "-"}</span>
+                        <span>Byggeår:</span><span>{featuredHome.built} m²</span>
+                        <span>Ombygget:</span><span>{featuredHome.remodel} m²</span>
+                        <span>Energimærke:</span><span>{featuredHome.energylabel}</span>
                     </div>
                     <div className="grid grid-cols-[auto_auto] self-start gap-x-8">
-                        <span>Udbetaing:</span><span>{featuredHome.data.payment}</span>
-                        <span>Brutto ex ejerudgift:</span><span>{featuredHome.data.gross}</span>
-                        <span>Netto ex ejerudgift:</span><span>{featuredHome.data.netto}</span>
-                        <span>Ejerudgifter:</span><span>{featuredHome.data.cost}</span>
+                        <span>Udbetaing:</span><span>{featuredHome.payment}</span>
+                        <span>Brutto ex ejerudgift:</span><span>{featuredHome.gross}</span>
+                        <span>Netto ex ejerudgift:</span><span>{featuredHome.netto}</span>
+                        <span>Ejerudgifter:</span><span>{featuredHome.cost}</span>
                     </div>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-16">
                     <div>
                         <h3 className="text-xl font-bold mb-4">Beskrivelse</h3>
-                        <p>{featuredHome.data.description}</p>
+                        <p>{featuredHome.description}</p>
                     </div>
                     <div>
                         <h3 className="text-xl font-bold mb-4">Ansvarlig mægler</h3>
-                        <AgentCard data={featuredHome.data.agent} horizontal={true} />
+                        <AgentCard data={featuredHome.agent} horizontal={true} />
                     </div>
                 </div>
                 </div>
@@ -88,9 +85,9 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
        
         <PopOver target="floorplan">
             <Image 
-                src={featuredHome.data.floorplan.url} 
-                width={featuredHome.data.floorplan.width} 
-                height={featuredHome.data.floorplan.height}
+                src={featuredHome.floorplan.url} 
+                width={featuredHome.floorplan.width} 
+                height={featuredHome.floorplan.height}
                 className="object-contain w-full h-full" 
                 alt="" />
         </PopOver>
