@@ -5,9 +5,10 @@ import PropertyCard from "./PropertyCard"
 type FeaturedHomesData = {
     data: Property[]
 }
+const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || `https://${process.env.VERCEL_URL}`;
 
 export async function getFeatured() {
-    const response = await fetch("http://localhost:3000/api/homes?_limit=4")
+    const response = await fetch(`${API_BASE_URL}/api/homes?_limit=4`)
     if(!response.ok) throw new Error(`Failed to load data: ${response.statusText}`)
     return response.json()
 }
