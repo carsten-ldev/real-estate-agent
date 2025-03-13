@@ -12,7 +12,6 @@ export async function getFeatured() {
 
 export default async function FeaturedHomes() {
     const featuredHomes: Property[] = await getFeatured()
-       console.log(featuredHomes);
         
     return (
         <section className="px-3 py-24">

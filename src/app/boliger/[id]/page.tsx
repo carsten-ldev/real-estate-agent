@@ -1,3 +1,5 @@
+
+
 import { Property } from "@/lib/types"
 import AgentCard from "@/components/AgentCard"
 import Image from "next/image"
@@ -6,6 +8,9 @@ import { IoImagesOutline } from "react-icons/io5";
 import { IoGridOutline } from "react-icons/io5";
 import { IoMapOutline } from "react-icons/io5";
 import { IoHeartOutline } from "react-icons/io5";
+
+import 'mapbox-gl/dist/mapbox-gl.css';
+import LocationMap from "@/components/LocationMap";
 
 export const dynamic = "force-dynamic"
 
@@ -19,6 +24,7 @@ async function getSingleHome(id: string) {
 export default async function Page({ params }: { params: Promise<{ id: string }>}) {
     const { id } = await params
     const featuredHome: Property = await getSingleHome(id)
+    const maptoken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN as string
         
     return (
         <>
@@ -95,7 +101,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
             gallery goes here
         </PopOver>
         <PopOver target="mapdiv">
-            map goes here
+            <LocationMap mapboxToken={maptoken} lat={featuredHome.lat} long={featuredHome.long} />
         </PopOver>
         
         </>
