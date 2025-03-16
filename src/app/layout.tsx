@@ -39,7 +39,7 @@ export default function RootLayout({
         <header>
           <div className="bg-primary text-white p-3">
             <div className="container mx-auto flex justify-between">
-          <div className="left-group flex items-center gap-2"><FaPaperPlane /> 4000@dinmaegler.com <FaPhoneAlt className="ml-4" />+45 7070 4000  </div> 
+          <div className="left-group items-center gap-2 flex"><FaPaperPlane /> 4000@dinmaegler.com <FaPhoneAlt className="ml-4" />+45 7070 4000  </div> 
           <Link
 							href="/login"
 							className="flex gap-2 items-center"
@@ -50,8 +50,13 @@ export default function RootLayout({
           </div>
           <div className="p-4">
               <div className="container mx-auto flex justify-between">
-                <Image width={296} height={49} src="/din_maegler_logo.png" alt="Din Mægler" />
-                <nav className="flex gap-8 items-end">
+              <Link href="/">
+                    <Image src={"/din_maegler_logo.png"} width={296} height={49} alt="Din Mægler" />
+              </Link>
+              <nav className="flex items-end sm:hidden">
+                <button className="text-3xl" >&#9776;</button>
+              </nav>
+                <nav className="gap-8 items-end hidden sm:flex">
                   <Link href="/boliger">Boliger til salg</Link>
                   <Link href="/maeglere">Mæglere</Link>
                   <Link href="/kontakt">Kontakt os</Link>
