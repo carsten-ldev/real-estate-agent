@@ -4,6 +4,7 @@ import { Property } from "@/lib/types"
 import AgentCard from "@/components/AgentCard"
 import Image from "next/image"
 import PopOver from "@/components/PopOver"
+import PopOverGallery from "@/components/PopOverGallery"
 import { IoImagesOutline } from "react-icons/io5";
 import { IoGridOutline } from "react-icons/io5";
 import { IoMapOutline } from "react-icons/io5";
@@ -11,6 +12,7 @@ import { IoHeartOutline } from "react-icons/io5";
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import LocationMap from "@/components/LocationMap";
+import PropertyGallery from "@/components/PropertyGallery";
 
 export const dynamic = "force-dynamic"
 
@@ -28,17 +30,17 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
         
     return (
         <>
-        <figure className="h-[70vh]">
-            <Image className="w-full h-full object-cover" src={featuredHome.images[0].url} width={featuredHome.images[0].width} height={featuredHome.images[0].height} alt={featuredHome.adress1} />
+        <figure className="aspect-video lg:aspect-none lg:h-[70vh] lg:w-full">
+            <Image className={`w-full h-full object-cover ${id=="61572ad4251a8a42ec8cb544" ? "object-bottom" : ""}`} src={featuredHome.images[0].url} width={featuredHome.images[0].width} height={featuredHome.images[0].height} alt={featuredHome.adress1} />
         </figure>
         <section className="px-3 mb-16">
             <div className="container mx-auto">
-                <div className="grid md:grid-cols-3 my-8">
-                    <div>
+                <div className="grid md:grid-cols-3 gap-2 mb-8 -mt-6 md:mt-8">
+                    <div className="flex justify-center md:flex-col md:justify-start order-2 md:order-1 ">
                         <h1 className="text-base font-bold">{featuredHome.adress1}</h1>
                         <p className="text-base font-bold">{featuredHome.postalcode} {featuredHome.city}</p>
                     </div>
-                    <div className=" self-center flex justify-center gap-8">
+                    <div className=" self-center flex justify-center gap-8 order-1 md:order-2 bg-white md:bg-transparent w-fit py-2 px-8 rounded-full shadow-md md:shadow-none mx-auto mb-4 md:mb-0">     
                         <button popoverTarget="gallery" title="Fotos"><IoImagesOutline color="#ccc" size={32} /></button>
                         <button popoverTarget="floorplan" title="Plantegning"><IoGridOutline color="#ccc" size={32} /></button>
                         <button popoverTarget="mapdiv" title="Kort">
@@ -49,8 +51,8 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                         </button>
 
                     </div>
-                    <div className="self-center">
-                    <p className="font-bold text-xl text-right">Kr. {featuredHome.price.toLocaleString("da-DK")}</p>
+                    <div className="self-center order-3">
+                    <p className="font-bold text-xl text-center md:text-right">Kr. {featuredHome.price.toLocaleString("da-DK")}</p>
                     </div>
                 </div>
 
@@ -89,6 +91,9 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                 </div>
         </section>
        
+        <PopOverGallery target="gallery">
+            <PropertyGallery images={featuredHome.images} />
+        </PopOverGallery>
         <PopOver target="floorplan">
             <Image 
                 src={featuredHome.floorplan.url} 
@@ -96,9 +101,6 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                 height={featuredHome.floorplan.height}
                 className="object-contain w-full h-full" 
                 alt="" />
-        </PopOver>
-        <PopOver target="gallery">
-            gallery goes here
         </PopOver>
         <PopOver target="mapdiv">
             <LocationMap mapboxToken={maptoken} lat={featuredHome.lat} long={featuredHome.long} />
