@@ -17,7 +17,7 @@ import PropertyGallery from "@/components/PropertyGallery";
 export const dynamic = "force-dynamic"
 
 
-async function getSingleHome(id: string) {
+async function getSingleHome(id: string): Promise<Property> {
     const response = await fetch(`https://dinmaegler.onrender.com/homes/${id}`)
     if(!response.ok) throw new Error(`Failed to load data: ${response.statusText}`)
     return response.json()
@@ -25,7 +25,7 @@ async function getSingleHome(id: string) {
 
 export default async function Page({ params }: { params: Promise<{ id: string }>}) {
     const { id } = await params
-    const featuredHome: Property = await getSingleHome(id)
+    const featuredHome = await getSingleHome(id)
     const maptoken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN as string
         
     return (

@@ -1,6 +1,9 @@
 
+type EnergyLabelProps = {
+    label: string;
+  };
 
-export default function EnergyLabel ({ label }: {label:string}) {
+export default function EnergyLabel ({ label }: EnergyLabelProps) {
 
     const energyColors: Record<string, string> = {
         A: "bg-energy_A",

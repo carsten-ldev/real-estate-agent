@@ -11,7 +11,7 @@ async function getSingleAgent(id: string): Promise<Agent> {
 
 export default async function Page({ params }: { params: Promise<{ id: string }>}) {
     const { id } =  await params
-    const featuredAgent: Agent = await getSingleAgent(id)
+    const featuredAgent = await getSingleAgent(id)
             
     return (
         <section className="bg-white px-3 py-24">

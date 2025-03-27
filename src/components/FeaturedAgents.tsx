@@ -3,14 +3,14 @@ import { Agent } from "@/lib/types"
 import Link from "next/link"
 import { Suspense } from "react"
 
-export async function getAgents() {
+export async function getAgents(): Promise<Agent[]> {
     const response = await fetch("http://dinmaegler.onrender.com/agents?_limit=3")
     if(!response.ok) throw new Error(`Failed to load data: ${response.statusText}`)
     return await response.json()
 }
 
 export default async function FeaturedAgents() {
-    const agents: Agent[] = await getAgents()
+    const agents = await getAgents()
     
     return (
         <section className="bg-white px-3 py-24">

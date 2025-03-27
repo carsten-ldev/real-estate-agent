@@ -5,14 +5,14 @@ import { HeadlineRibbon } from "@/components/HeadlineRibbon"
 
 export const dynamic = "force-dynamic"
 
-async function getFeatured() {
+async function getFeatured(): Promise<Property[]> {
     const response = await fetch(`https://dinmaegler.onrender.com/homes`)
     if(!response.ok) throw new Error(`Failed to load data: ${response.statusText}`)
     return response.json()
 }
 
 export default async function HomesPage() {
-    const featuredHomes: Property[] = await getFeatured()
+    const featuredHomes = await getFeatured()
         
     return (
         <>

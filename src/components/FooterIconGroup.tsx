@@ -1,7 +1,12 @@
 import { ReactNode } from "react";
 
+type FooterIconGroupProps = {
+	icon: ReactNode;
+	smallText: string;
+	bigText: string;
+};
 
-export default function FooterIconGroup({ icon, smallText, bigText }: {icon: ReactNode, smallText: string, bigText: string}) {
+export default function FooterIconGroup({ icon, smallText, bigText }: FooterIconGroupProps) {
 
 
     return (

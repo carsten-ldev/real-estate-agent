@@ -3,7 +3,13 @@ import { useEffect, useRef } from "react";
 import Map, {Marker, MapRef} from "react-map-gl/mapbox"
 import { HiMapPin } from "react-icons/hi2";
 
-export default function LocationMap({ mapboxToken, lat, long }: { mapboxToken: string,  lat: number, long: number }) {
+type LocationMapProps = {
+    mapboxToken: string;
+    lat: number;
+    long: number;
+}
+
+export default function LocationMap({ mapboxToken, lat, long }: LocationMapProps) {
     const mapRef = useRef<MapRef | null>(null);
     const containerRef = useRef<HTMLDivElement | null>(null);
 

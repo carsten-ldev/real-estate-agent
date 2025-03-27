@@ -11,7 +11,7 @@ async function getAgents(): Promise<Agent[]>  {
 }
 
 export default async function AgentsPage() {
-    const agents: Agent[] = await getAgents()
+    const agents = await getAgents()
     
     return (
         <>

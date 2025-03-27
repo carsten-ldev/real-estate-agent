@@ -4,14 +4,14 @@ import PropertyCard from "./PropertyCard"
 
 
 
-export async function getFeatured() {
+export async function getFeatured(): Promise<Property[]> {
     const response = await fetch(`https://dinmaegler.onrender.com/homes?_limit=4`)
     if(!response.ok) throw new Error(`Failed to load data: ${response.statusText}`)
     return response.json()
 }
 
 export default async function FeaturedHomes() {
-    const featuredHomes: Property[] = await getFeatured()
+    const featuredHomes = await getFeatured()
         
     return (
         <section className="px-3 py-24">
