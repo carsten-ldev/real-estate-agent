@@ -1,8 +1,6 @@
-# Din Mægler
+# Real estate agent - Din Mægler
 
-This is a remake of another project: DinMægler05.
-
-This project is done using a more modern tech-stack with Next.js and typescript.
+Fake real estate agent homepage, created using Next.js and typescript.
 
 Map popover on the property detail page is implemented using mapbox-gl and react-mapbox-gl.
 
