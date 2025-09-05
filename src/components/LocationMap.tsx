@@ -37,7 +37,7 @@ export default function LocationMap({ mapboxToken, lat, long }: LocationMapProps
   }, []);
 
     return (
-        <div ref={containerRef} style={{ width: "100%", height: "100%" }}>
+        <div ref={containerRef} style={{ width: "100%", height: "100%"}}>
         <Map
             ref={mapRef}
             mapboxAccessToken={ mapboxToken }
