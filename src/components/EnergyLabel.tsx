@@ -12,7 +12,7 @@ export default function EnergyLabel ({ label }: EnergyLabelProps) {
         D: "bg-energy_D",
       };
 
-    return <span className={`py-1 px-[0.375rem] mr-4 font-bold ${energyColors[label]} text-white`}>
+    return <span className={`py-1 px-1.5 mr-4 font-bold ${energyColors[label]} text-white`}>
                 {label}
             </span>;
 }

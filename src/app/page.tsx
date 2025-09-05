@@ -7,7 +7,7 @@ export default function Home() {
     <>
       <section className="h-3/6 relative bg-gray-400">
         <Image width={1920} height={850} src="/hero.jpg" alt="."  className="w-full h-full object-cover mix-blend-multiply"/>
-        <div className="w-[85vw] max-w-[40rem] absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 bg-white p-2 sm:p-6">
+        <div className="w-[85vw] max-w-160 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 bg-white p-2 sm:p-6">
           <h1 className="text-sm sm:text-lg font-bold mb-4">Søg blandt 158 boliger til salg i 74 butikker</h1>
           <form action="/boliger" className=" flex gap-2">
             <input type="search" name="soeg" id="soeg" className="border p-2  flex-1"/>

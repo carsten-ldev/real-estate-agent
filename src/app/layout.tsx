@@ -67,7 +67,7 @@ export default function RootLayout({
         <main>
           {children}
         </main>
-        <footer className="pt-16 bg-gradient-to-t from-white from-35% to-35% to-transparent">
+        <footer className="pt-16 bg-linear-to-t from-white from-35% to-35% to-transparent">
           <div className="container mx-auto">
             <Image src="/din_maegler_logo.png" width={296} height={49} alt="Din Mægler" />
             <p className="my-6">
