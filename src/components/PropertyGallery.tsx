@@ -14,27 +14,27 @@ type PropertyGalleryProps = {
 }
 
 export default function PropertyGallery({ images }: PropertyGalleryProps) {
-
-
     return (
-        
-        <Swiper
-            modules={[Navigation]}
-            slidesPerView={1}
-            navigation
-            >
-            {images.map((image, index) => (
-                <SwiperSlide key={index} className="relative">
-                    <div className="absolute top-0 left-0 z-10 bg-black bg-opacity-50 text-white p-2">{index + 1} / {images.length}</div>
-                    <Image 
-                        src={image.url} alt={image.name} 
-                        width={image.width} height={image.height}
-                        layout="responsive"
-                        />
-
-                </SwiperSlide>
-            ))} 
-        </Swiper>
-
-    )
+            <Swiper
+                modules={[Navigation]}
+                slidesPerView={1}
+                navigation
+                className="w-auto h-[70vh]"
+                >
+                {images.map((image, index) => (
+                    <SwiperSlide key={index} className="relative">
+                        <div className="absolute top-0 left-0 z-10 bg-black bg-opacity-50 text-white p-2">
+                            {index + 1} / {images.length}
+                        </div>
+                        <Image 
+                            src={image.url} 
+                            alt={image.name} 
+                            width={image.width} 
+                            height={image.height}
+                            className="w-full h-full object-cover"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
+                            />
+                    </SwiperSlide>
+                ))} 
+            </Swiper>    )
 }
