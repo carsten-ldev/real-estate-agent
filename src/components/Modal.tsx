@@ -53,20 +53,14 @@ export default function Modal({
         }
     }, [isOpen]) // Remove onClose from dependencies to prevent recreating
 
-    const sizeClasses = {
-        sm: 'max-w-md',
-        md: 'max-w-2xl',
-        lg: 'max-w-4xl',
-        xl: 'max-w-6xl',
-        full: 'max-w-full w-full h-full'
-    }
+    
 
     return (
         <dialog 
             ref={dialogRef}
-            className="backdrop:bg-black backdrop:bg-opacity-50 bg-transparent p-0 m-0 max-w-none max-h-none w-full h-full"
+            className="backdrop:bg-black backdrop:bg-opacity-50 bg-transparent p-0 m-0"
         >
-            <div className={` ${sizeClasses[size]} mx-auto max-h-[90vh] relative overflow-hidden`}>
+            <div className="mx-auto relative overflow-hidden">
                 <button 
                     onClick={onClose} 
                     className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-white bg-opacity-80 hover:bg-opacity-100 text-gray-600 hover:text-gray-800 transition-colors"

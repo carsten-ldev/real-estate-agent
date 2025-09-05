@@ -64,4 +64,6 @@ body {
 dialog {
   all: revert;
   padding: 0;
+  width: 80vw;
+  overflow: hidden;
 }

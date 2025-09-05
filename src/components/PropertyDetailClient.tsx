@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useCallback } from "react"
+import { useState } from "react"
 import { Property } from "@/lib/types"
 import AgentCard from "@/components/AgentCard"
 import Image from "next/image"
@@ -24,8 +24,6 @@ type PropertyDetailClientProps = {
 export default function PropertyDetailClient({ featuredHome, maptoken }: PropertyDetailClientProps) {
     const [activeModal, setActiveModal] = useState<ModalType>(null)
 
-    const closeModal = useCallback(() => setActiveModal(null), [])
-
     return (
         <>
         <figure className="aspect-video lg:aspect-none lg:h-[70vh] lg:w-full">
@@ -41,23 +39,20 @@ export default function PropertyDetailClient({ featuredHome, maptoken }: Propert
                     <div className=" self-center flex justify-center gap-8 order-1 md:order-2 bg-white md:bg-transparent w-fit py-2 px-8 rounded-full shadow-md md:shadow-none mx-auto mb-4 md:mb-0">     
 
                         <button 
-                            className="cursor-pointer hover:scale-110 transition-transform" 
+                            className="cursor-pointer" 
                             onClick={() => setActiveModal('gallery')}
-                            title="Fotos"
                         >
                             <IoImagesOutline color="#ccc" size={32} />
                         </button>
                         <button 
-                            className="cursor-pointer hover:scale-110 transition-transform" 
+                            className="cursor-pointer" 
                             onClick={() => setActiveModal('floorplan')}
-                            title="Plantegning"
                         >
                             <IoGridOutline color="#ccc" size={32} />
                         </button>
                         <button 
-                            className="cursor-pointer hover:scale-110 transition-transform" 
+                            className="cursor-pointer" 
                             onClick={() => setActiveModal('map')}
-                            title="Kort"
                         >
                             <IoMapOutline color="#ccc" size={32} />
                         </button>
@@ -108,7 +103,7 @@ export default function PropertyDetailClient({ featuredHome, maptoken }: Propert
         {/* Gallery Modal */}
         <Modal 
             isOpen={activeModal === 'gallery'} 
-            onClose={closeModal}
+            onClose={() => setActiveModal(null)}
             size="xl"
         >
             <PropertyGallery images={featuredHome.images} />
@@ -117,7 +112,7 @@ export default function PropertyDetailClient({ featuredHome, maptoken }: Propert
         {/* Floorplan Modal */}
         <Modal 
             isOpen={activeModal === 'floorplan'} 
-            onClose={closeModal}
+            onClose={() => setActiveModal(null)}
             size="lg"
         >
             <div className="flex justify-center">
@@ -134,8 +129,7 @@ export default function PropertyDetailClient({ featuredHome, maptoken }: Propert
         {/* Map Modal */}
         <Modal 
             isOpen={activeModal === 'map'} 
-            onClose={closeModal}
-    
+            onClose={() => setActiveModal(null)}
             size="xl"
         >
             <div className="h-120 w-[90vw]">
