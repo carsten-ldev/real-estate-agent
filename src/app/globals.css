@@ -60,3 +60,8 @@ body {
 [popover="auto"]::backdrop {
   background-color: rgba(0, 0, 0, 0.8);
 }
+
+dialog {
+  all: revert;
+  padding: 0;
+}
