@@ -18,7 +18,7 @@ export default async function HomesPage() {
         <>
             <HeadlineRibbon headline="Boliger til salg" />
         <section className="px-3 py-24">
-            <div className="container mx-auto">
+            <div className="container mx-auto px-4 md:px-12">
                 <div className="grid md:grid-cols-2 gap-6">
                     <Suspense fallback="Loading homes...">
                         {featuredHomes.map(featuredHome => (

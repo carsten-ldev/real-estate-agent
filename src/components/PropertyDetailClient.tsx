@@ -30,7 +30,7 @@ export default function PropertyDetailClient({ featuredHome, maptoken }: Propert
             <Image className={`w-full h-full object-cover ${featuredHome.id=="61572ad4251a8a42ec8cb544" ? "object-bottom" : ""}`} src={featuredHome.images[0].url} width={featuredHome.images[0].width} height={featuredHome.images[0].height} alt={featuredHome.adress1} />
         </figure>
         <section className="px-3 mb-16">
-            <div className="container mx-auto">
+            <div className="container mx-auto px-4 md:px-12">
                 <div className="grid md:grid-cols-3 gap-2 mb-8 -mt-6 md:mt-8">
                     <div className="flex justify-center md:flex-col md:justify-start order-2 md:order-1 ">
                         <h1 className="text-base font-bold">{featuredHome.adress1}</h1>
@@ -65,26 +65,21 @@ export default function PropertyDetailClient({ featuredHome, maptoken }: Propert
                     </div>
                 </div>
 
-                <div className="flex justify-between my-8">
-                    <div className="grid grid-cols-[auto_auto] gap-x-8">
-                        <span>Sagsnummer:</span><span>1234567898</span>
-                        <span>Boligareal:</span><span>{featuredHome.livingspace} m²</span>
-                        <span>Grundareal:</span><span>{featuredHome.lotsize} m²</span>
-                        <span>Rum/værelser:</span><span>{featuredHome.rooms}</span>
-                        <span>Antal plan:</span><span>2</span>
-                    </div>
-                    <div className="grid grid-cols-[auto_auto] self-start gap-x-8">
-                        <span>Kælder:</span><span>{featuredHome.basementsize ? featuredHome.basementsize : "-"}</span>
-                        <span>Byggeår:</span><span>{featuredHome.built} m²</span>
-                        <span>Ombygget:</span><span>{featuredHome.remodel} m²</span>
-                        <span>Energimærke:</span><span>{featuredHome.energylabel}</span>
-                    </div>
-                    <div className="grid grid-cols-[auto_auto] self-start gap-x-8">
-                        <span>Udbetaing:</span><span>{featuredHome.payment}</span>
-                        <span>Brutto ex ejerudgift:</span><span>{featuredHome.gross}</span>
-                        <span>Netto ex ejerudgift:</span><span>{featuredHome.netto}</span>
-                        <span>Ejerudgifter:</span><span>{featuredHome.cost}</span>
-                    </div>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-20 md:gap-x-40 lg:gap-x-40 xl:gap-x-60 mb-16">
+
+                        <div className="flex justify-between"><span>Sagsnummer:</span><span>1234567898</span></div>
+                        <div className="flex justify-between"><span>Boligareal:</span><span>{featuredHome.livingspace} m²</span></div>
+                        <div className="flex justify-between"><span>Grundareal:</span><span>{featuredHome.lotsize} m²</span></div>
+                        <div className="flex justify-between"><span>Rum/værelser:</span><span>{featuredHome.rooms}</span></div>
+                        <div className="flex justify-between"><span>Antal plan:</span><span>2</span></div>
+                        <div className="flex justify-between"><span>Kælder:</span><span>{featuredHome.basementsize ? featuredHome.basementsize : "-"}</span></div>
+                        <div className="flex justify-between"><span>Byggeår:</span><span>{featuredHome.built} m²</span></div>
+                        <div className="flex justify-between"><span>Ombygget:</span><span>{featuredHome.remodel} m²</span></div>
+                        <div className="flex justify-between"><span>Energimærke:</span><span>{featuredHome.energylabel}</span></div>
+                        <div className="flex justify-between"><span>Udbetaing:</span><span>{featuredHome.payment}</span></div>
+                        <div className="flex justify-between"><span>Brutto ex ejerudgift:</span><span>{featuredHome.gross}</span></div>
+                        <div className="flex justify-between"><span>Netto ex ejerudgift:</span><span>{featuredHome.netto}</span></div>
+                        <div className="flex justify-between"><span>Ejerudgifter:</span><span>{featuredHome.cost}</span></div>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-16">
